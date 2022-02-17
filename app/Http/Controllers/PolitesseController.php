@@ -27,18 +27,18 @@ class PolitesseController extends Controller
         ]);
     }
 
-    public function about()
-    {
-        return view('a-propos', [
-            'name' => 'A propos',
-            'equipe' => ['Max', 'Mix', 'Mox'],
-        ]);
-    }
+    // public function about()
+    // {
+    //     return view('a-propos', [
+    //         'name' => 'A propos',
+    //         'equipe' => ['Max', 'Mix', 'Mox'],
+    //     ]);
+    // }
 
-    public function aboutShow($user)
-    {
-        return view('a-propos-show', [
-            'user' => $user,
-        ]);
-    }
+    // public function aboutShow($user)
+    // {
+    //     return view('a-propos-show', [
+    //         'user' => $user,
+    //     ]);
+    // }
 }
