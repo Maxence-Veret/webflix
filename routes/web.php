@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PolitesseController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoyController;
 use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
@@ -21,29 +22,14 @@ Route::get('/a-propos', [AboutController::class, 'about']);
 
 Route::get('/a-propos/{user}', [AboutController::class, 'aboutShow']);
 
+Route::get('/categories', [CategoyController::class, 'index']);
+
 //affiche le formulaire
-Route::get('/categories/creer', function () {
-    return view('categories/create');
-});
+Route::get('/categories/creer', [CategoyController::class, 'create']);
 
 // je traite le formulaire
-Route::post('/categories/creer', function () {
-    //vérifier les erreurs
-    request()->validate([
-        'name' => 'required|min:3|max:10',
-        // 'email' => 'required|email',
-    ]);
-
-    // dump(request('name'));
-
-    //s'il n'y a pas 'erreurs, on cree la categorie
-    Category::create([
-    'name' => request('name'),
-    ]);
-
-    return redirect('/exercice/categories');
-
-});
+Route::post('/categories/creer', [CategoyController::class, 'store']);
+Route::get('/categories/{category}', [CategoyController::class, 'Show']);
 
 
 
