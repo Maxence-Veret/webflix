@@ -10,4 +10,17 @@ class Movie extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'synopsys', 'duration', 'youtube', 'cover', 'released_at'];
+
+    protected $casts = [
+        'released_at' => 'datetime:Y-m-d',
+    ];
+
+    public function formatDuration()
+    {
+        $hours = floor($this->duration / 60);
+        $minutes = $this->duration % 60;
+
+        return $hours.'h'.$minutes;
+    }
+
 }

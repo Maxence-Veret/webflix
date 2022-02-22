@@ -11,7 +11,7 @@
             </ul>
         </div>
     @endif
-
+        <h1>Créer une nouvelle categorie </h1>
     <form action="" method="post">
         @csrf
         <input type="text" name="name" placeholder="nom..." class="form-control" value="{{ old('name') }}">

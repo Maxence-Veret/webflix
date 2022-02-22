@@ -20,7 +20,7 @@ class movieFactory extends Factory
             'title' => $this->faker->sentence(4),
             'synopsys' => $this->faker->text(300),
             'duration' => rand(100, 200),
-            'cover' => $this->faker->imageUrl(),
+            'cover' => '',
             'released_at' => $this->faker->date,
         ];
     }
