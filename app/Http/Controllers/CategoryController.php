@@ -37,20 +37,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-                //vérifier les erreurs
+        // Vérifier les erreurs
         request()->validate([
-            'name' => 'required|min:3|max:25',
+            'name' => 'required|min:3|max:20',
             // 'email' => 'required|email',
         ]);
 
         // dump(request('name'));
 
-        //s'il n'y a pas 'erreurs, on cree la categorie
+        // S'il n'y a pas d'erreurs, on crée la catégorie
         $category = Category::create([
             'name' => request('name'),
         ]);
-    
-        return redirect('/categories')->with('status', 'La catégorie a été créée.');
+
+        return redirect('/categories')->with('status', 'La catégorie '.$category->name.' a été créée.');
     }
 
     /**
@@ -61,7 +61,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', ['category' => $category]);
+        return view('categories.show', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -86,17 +88,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        // verifier les erreurs
+        // Vérifier les erreurs
         request()->validate([
             'name' => 'required|min:3',
         ]);
 
-        //on modifie la catégorie dans la bdd
+        // On modifie la catégorie dans la BDD
         $category->update([
             'name' => request('name'),
         ]);
 
-        return redirect('/categories')->with('status', 'La catégorie ' .$category->name.' a été modifiée.');
+        return redirect('/categories')->with('status', 'La catégorie '.$category->name.' a été modifiée.');
     }
 
     /**
@@ -108,7 +110,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        
-        return redirect('/categories')->with('status', 'La catégorie ' .$category->name.' a été supprimée.');
+
+        return redirect('/categories')->with('status', 'La catégorie '.$category->name.' a été supprimée.');
     }
 }

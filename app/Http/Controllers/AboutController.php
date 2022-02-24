@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class AboutController extends Controller
+class AboutController
 {
-    public function about()
+    public function index()
     {
-        return view('a-propos', [
-            'name' => 'A propos',
-            'equipe' => ['Max', 'Mix', 'Mox'],
+        $name = 'A propos';
+
+        return view('about', [
+            'name' => $name,
+            'team' => ['Fiorella', 'Marina', 'Matthieu'],
         ]);
     }
 
-    public function aboutShow($user)
+    public function show($user)
     {
-        return view('a-propos-show', [
+        return view('about-show', [
             'user' => $user,
         ]);
     }

@@ -17,10 +17,14 @@ class Movie extends Model
 
     public function formatDuration()
     {
-        $hours = floor($this->duration / 60);
-        $minutes = $this->duration % 60;
+        $hours = floor($this->duration / 60); // 134 => 2
+        $minutes = $this->duration % 60; // 134 => 14
 
         return $hours.'h'.$minutes;
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
