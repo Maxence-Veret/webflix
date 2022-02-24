@@ -9,9 +9,13 @@
         <div class="card shadow">
             <div class="card-body">
                 <h1>{{ $movie->title }}</h1>
-                <p>{{ $movie->released_at }} | {{ $movie->duration }}</p>
+                <p>{{ $movie->released_at->translatedFormat('d F Y') }} | {{ $movie->category?->name }} | {{ $movie->formatDuration() }}</p>
                 <div class="mb-4">
                     {{ $movie->synopsys }}
+                </div>
+
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/V-DTTGcWzlk?rel=0" title="Matrix Resurrections" allowfullscreen></iframe> 
                 </div>
             </div>
         </div>

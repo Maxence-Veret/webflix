@@ -40,13 +40,17 @@ Route::get('/categories/{category}/modifier', [CategoryController::class, 'edit'
 Route::put('/categories/{category}', [CategoryController::class, 'update']);
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
 
-Route::get('/films', [MovieController::class, 'index']);
-Route::get('/films/{movie}', [MovieController::class, 'show']);
+// Route::get('/films', [MovieController::class, 'index']);
+// Route::get('/films/{movie}', [MovieController::class, 'show']);
+// Route::get('/film/creer', 'create', [MovieController::class, 'store']);
+// Route::get('/film/{movie}', 'store', [MovieController::class, 'show']);
 
-// Route::controller(MovieController::class)->group(function () {
-//     Route::get('/films', 'index');
-//     Route::get('/films/{movie}', 'show');
-// });
+Route::controller(MovieController::class)->group(function () {
+    Route::get('/films', 'index');
+    Route::get('/films/{movie}', 'show');
+    Route::get('/film/creer', 'create');
+    Route::post('/film/{movie}', 'store');
+});
 
 Route::get('/exercice/categories', function () {
     return view('exercice.categories', [
@@ -96,3 +100,7 @@ Route::get('/exercice/films/{id}', function ($id) {
         'movie' => $movie
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

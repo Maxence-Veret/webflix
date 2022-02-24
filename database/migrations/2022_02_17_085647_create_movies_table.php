@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('duration');
             $table->string('youtube')->nullable();
             $table->string('cover');
-            $table->timestamp('released_at')->nullable()->constrained();
-            $table->foreignId('category_id')->nullable();
+            $table->timestamp('released_at')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
